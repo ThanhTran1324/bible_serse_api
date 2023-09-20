@@ -3,12 +3,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thanhdev.bb.io.entity.VerseEntity;
+import com.thanhdev.bb.io.to.VerseTO;
 import com.thanhdev.bb.repo.VerseRepo;
 import com.thanhdev.bb.services.VerseService;
+
 
 @Service
 public class VerseServiceImpl implements VerseService{
@@ -17,19 +20,12 @@ public class VerseServiceImpl implements VerseService{
     VerseRepo verseRepo;
 
     @Override
-    public List<String> getRandomVerse(){
-        // TODO hook the Repo
-        ArrayList<String> returnValue = new ArrayList<>();
-
-        return returnValue;
-    }
-
-    @Override
-    public VerseEntity addNewVerse(VerseEntity newVerseEntity){
-        if(newVerseEntity.getCreate_at() == null)
-        newVerseEntity.setCreate_at(new Timestamp(System.currentTimeMillis()));
-
-        return verseRepo.save(newVerseEntity);
+    public VerseTO getVerse(){
+       VerseTO returnVerseTO = new VerseTO();
+       VerseEntity verseEntity = verseRepo.getById(Long.parseLong("5000"));
+       BeanUtils.copyProperties(verseEntity, returnVerseTO);
+        
+       return returnVerseTO;
     }
 
     

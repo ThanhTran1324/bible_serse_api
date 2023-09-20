@@ -1,10 +1,7 @@
 package com.thanhdev.bb.services;
 
-import java.util.List;
-
-import com.thanhdev.bb.io.entity.VerseEntity;
+import com.thanhdev.bb.io.to.VerseTO;
 
 public interface VerseService {
-    List<String> getRandomVerse();
-    VerseEntity addNewVerse(VerseEntity newVerseEntity);
+    VerseTO getVerse();
 }
