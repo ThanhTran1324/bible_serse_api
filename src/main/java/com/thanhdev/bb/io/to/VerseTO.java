@@ -2,10 +2,10 @@ package com.thanhdev.bb.io.to;
 
 public class VerseTO {
     private Long id;
-    private Long book_id;
-    private Long chapter_number;
-    private Long verse_number;
-    private String verse_content;
+    private Long bookId;
+    private Long chapterNumber;
+    private Long verseNumber;
+    private String verseContent;
     
     public Long getId() {
         return id;
@@ -13,29 +13,29 @@ public class VerseTO {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getBook_id() {
-        return book_id;
+    public Long getBookId() {
+        return bookId;
     }
-    public void setBook_id(Long book_id) {
-        this.book_id = book_id;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
-    public Long getChapter_number() {
-        return chapter_number;
+    public Long getChapterNumber() {
+        return chapterNumber;
     }
-    public void setChapter_number(Long chapter_number) {
-        this.chapter_number = chapter_number;
+    public void setChapterNumber(Long chapterNumber) {
+        this.chapterNumber = chapterNumber;
     }
-    public Long getVerse_number() {
-        return verse_number;
+    public Long getVerseNumber() {
+        return verseNumber;
     }
-    public void setVerse_number(Long verse_number) {
-        this.verse_number = verse_number;
+    public void setVerseNumber(Long verseNumber) {
+        this.verseNumber = verseNumber;
     }
-    public String getVerse_content() {
-        return verse_content;
+    public String getVerseContent() {
+        return verseContent;
     }
-    public void setVerse_content(String verse_content) {
-        this.verse_content = verse_content;
+    public void setVerseContent(String verseContent) {
+        this.verseContent = verseContent;
     }
 
     

@@ -1,14 +1,14 @@
 package com.thanhdev.bb.io.to;
 
 public class BookTO {
-    private long book_id;
+    private long bookId;
     private String book_name;
 
-    public long getBook_id() {
-        return book_id;
+    public long getbookId() {
+        return bookId;
     }
-    public void setBook_id(long book_id) {
-        this.book_id = book_id;
+    public void setbookId(long bookId) {
+        this.bookId = bookId;
     }
     public String getBook_name() {
         return book_name;

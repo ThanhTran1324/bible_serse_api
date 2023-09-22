@@ -18,17 +18,17 @@ public class BookEntity implements Serializable{
     private long id;
 
     @Column(nullable = false)
-    private long book_id;
+    private long bookId;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(255)")
     private String book_name;
 
-    public long getBook_id() {
-        return book_id;
+    public long getbookId() {
+        return bookId;
     }
 
-    public void setBook_id(long book_id) {
-        this.book_id = book_id;
+    public void setbookId(long bookId) {
+        this.bookId = bookId;
     }
 
     public String getBook_name() {

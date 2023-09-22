@@ -1,5 +1,5 @@
 package com.thanhdev.bb.services.impl;
-import java.sql.Timestamp;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +20,34 @@ public class VerseServiceImpl implements VerseService{
     VerseRepo verseRepo;
 
     @Override
-    public VerseTO getVerse(){
-       VerseTO returnVerseTO = new VerseTO();
-       VerseEntity verseEntity = verseRepo.getById(Long.parseLong("5000"));
-       BeanUtils.copyProperties(verseEntity, returnVerseTO);
+    public List<VerseTO> getVerses(Long bookId, Long chapterNumber, Long verseNumber){
+        List<VerseTO> returnVerseTO = new ArrayList<VerseTO>();
+        ArrayList<VerseEntity> verseQueryResult = new ArrayList<VerseEntity>();
+
+        if(bookId == null && chapterNumber == null && verseNumber == null){
+            verseQueryResult = verseRepo.findAll();
+        }
+
+        if(bookId != null && chapterNumber == null && verseNumber == null){
+            verseQueryResult = verseRepo.findByBookId(bookId);
+        }
+
+        if(bookId != null && chapterNumber != null && verseNumber == null){
+            verseQueryResult = verseRepo.findByBookIdAndChapterNumber(bookId, chapterNumber);
+        }
+
+        if(bookId != null && chapterNumber != null && verseNumber != null){
+            verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumber(bookId, chapterNumber, verseNumber);
+        }
+
         
+
+        for(VerseEntity verseEntity: verseQueryResult){
+            VerseTO newVerseTO = new VerseTO();
+            BeanUtils.copyProperties(verseEntity, newVerseTO);    
+            returnVerseTO.add(newVerseTO);
+        }
+
        return returnVerseTO;
     }
 
