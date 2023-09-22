@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.thanhdev.bb.io.entity.VerseEntity;
@@ -23,21 +24,25 @@ public class VerseServiceImpl implements VerseService{
     public List<VerseTO> getVerses(Long bookId, Long chapterNumber, Long verseNumber){
         List<VerseTO> returnVerseTO = new ArrayList<VerseTO>();
         ArrayList<VerseEntity> verseQueryResult = new ArrayList<VerseEntity>();
-
+    Sort sortByBookChapterVerse = Sort.by(
+        Sort.Order.asc("bookId"),
+        Sort.Order.asc("chapterNumber"),
+        Sort.Order.asc("verseNumber")
+);
         if(bookId == null && chapterNumber == null && verseNumber == null){
-            verseQueryResult = verseRepo.findAll();
+            verseQueryResult = verseRepo.findAll(sortByBookChapterVerse);
         }
 
         if(bookId != null && chapterNumber == null && verseNumber == null){
-            verseQueryResult = verseRepo.findByBookId(bookId);
+            verseQueryResult = verseRepo.findByBookId(bookId, sortByBookChapterVerse);
         }
 
         if(bookId != null && chapterNumber != null && verseNumber == null){
-            verseQueryResult = verseRepo.findByBookIdAndChapterNumber(bookId, chapterNumber);
+            verseQueryResult = verseRepo.findByBookIdAndChapterNumber(bookId, chapterNumber, sortByBookChapterVerse);
         }
 
         if(bookId != null && chapterNumber != null && verseNumber != null){
-            verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumber(bookId, chapterNumber, verseNumber);
+            verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumber(bookId, chapterNumber, verseNumber, sortByBookChapterVerse);
         }
 
         
