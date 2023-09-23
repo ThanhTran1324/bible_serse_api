@@ -17,27 +17,29 @@ public class BookEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(name="book_id", nullable = false)
     private long bookId;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255)")
-    private String book_name;
+    @Column(name="book_name", nullable = false, columnDefinition = "VARCHAR(255)")
+    private String bookName;
 
-    public long getbookId() {
+    public long getBookId() {
         return bookId;
     }
 
-    public void setbookId(long bookId) {
+    public void setBookId(long bookId) {
         this.bookId = bookId;
     }
 
-    public String getBook_name() {
-        return book_name;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setBook_name(String book_name) {
-        this.book_name = book_name;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
+
+   
 
     
 }

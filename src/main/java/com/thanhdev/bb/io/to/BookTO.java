@@ -2,18 +2,20 @@ package com.thanhdev.bb.io.to;
 
 public class BookTO {
     private long bookId;
-    private String book_name;
-
-    public long getbookId() {
+    private String bookName;
+    
+    public long getBookId() {
         return bookId;
     }
-    public void setbookId(long bookId) {
+    public void setBookId(long bookId) {
         this.bookId = bookId;
     }
-    public String getBook_name() {
-        return book_name;
+    public String getBookName() {
+        return bookName;
     }
-    public void setBook_name(String book_name) {
-        this.book_name = book_name;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
+
+  
 }
