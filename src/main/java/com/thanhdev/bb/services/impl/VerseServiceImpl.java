@@ -29,24 +29,14 @@ public class VerseServiceImpl implements VerseService{
         Sort.Order.asc("chapterNumber"),
         Sort.Order.asc("verseNumber")
 );
-        if(bookId == null && chapterNumber == null && verseNumber == null){
-            verseQueryResult = verseRepo.findAll(sortByBookChapterVerse);
-        }
-
-        if(bookId != null && chapterNumber == null && verseNumber == null){
+        if( chapterNumber == null && verseNumber == null){
             verseQueryResult = verseRepo.findByBookId(bookId, sortByBookChapterVerse);
-        }
-
-        if(bookId != null && chapterNumber != null && verseNumber == null){
+        } else if( chapterNumber != null && verseNumber == null){
             verseQueryResult = verseRepo.findByBookIdAndChapterNumber(bookId, chapterNumber, sortByBookChapterVerse);
-        }
-
-        if(bookId != null && chapterNumber != null && verseNumber != null){
+        } else if( chapterNumber != null && verseNumber != null){
             verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumber(bookId, chapterNumber, verseNumber, sortByBookChapterVerse);
         }
-
-        
-
+    
         for(VerseEntity verseEntity: verseQueryResult){
             VerseTO newVerseTO = new VerseTO();
             BeanUtils.copyProperties(verseEntity, newVerseTO);    
