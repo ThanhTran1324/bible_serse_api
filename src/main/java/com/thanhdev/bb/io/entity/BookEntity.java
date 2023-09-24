@@ -18,16 +18,19 @@ public class BookEntity implements Serializable{
     private long id;
 
     @Column(name="book_id", nullable = false)
-    private long bookId;
+    private Long bookId;
 
     @Column(name="book_name", nullable = false, columnDefinition = "VARCHAR(255)")
     private String bookName;
 
-    public long getBookId() {
+    @Column(name="max_chapter_number", nullable = false)
+    private Long maxChapterNumber;
+
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
@@ -39,7 +42,11 @@ public class BookEntity implements Serializable{
         this.bookName = bookName;
     }
 
-   
+    public Long getMaxChapterNumber() {
+        return maxChapterNumber;
+    }
 
-    
+    public void setMaxChapterNumber(Long maxChapterNumber) {
+        this.maxChapterNumber = maxChapterNumber;
+    }    
 }
