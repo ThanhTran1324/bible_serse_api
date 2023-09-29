@@ -21,7 +21,7 @@ public class VerseServiceImpl implements VerseService{
     VerseRepo verseRepo;
 
     @Override
-    public List<VerseTO> getVerses(Long bookId, Long chapterNumber, Long verseNumber){
+    public List<VerseTO> getVerses(Long bookId, Long chapterNumber, Long verseStartNumber, Long verEndNumber){
         List<VerseTO> returnVerseTO = new ArrayList<VerseTO>();
         ArrayList<VerseEntity> verseQueryResult = new ArrayList<VerseEntity>();
     Sort sortByBookChapterVerse = Sort.by(
@@ -29,12 +29,15 @@ public class VerseServiceImpl implements VerseService{
         Sort.Order.asc("chapterNumber"),
         Sort.Order.asc("verseNumber")
 );
-        if( chapterNumber == null && verseNumber == null){
+        if( chapterNumber == null && verseStartNumber == null && verEndNumber == null){
             verseQueryResult = verseRepo.findByBookId(bookId, sortByBookChapterVerse);
-        } else if( chapterNumber != null && verseNumber == null){
+        } else if( chapterNumber != null && verseStartNumber == null && verEndNumber == null){
             verseQueryResult = verseRepo.findByBookIdAndChapterNumber(bookId, chapterNumber, sortByBookChapterVerse);
-        } else if( chapterNumber != null && verseNumber != null){
-            verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumber(bookId, chapterNumber, verseNumber, sortByBookChapterVerse);
+        } else if( chapterNumber != null && verseStartNumber != null && verEndNumber == null){
+            verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumber(bookId, chapterNumber, verseStartNumber, sortByBookChapterVerse);
+        } else if ( chapterNumber != null && verseStartNumber != null && verEndNumber != null ) {
+                        verseQueryResult = verseRepo.findByBookIdAndChapterNumberAndVerseNumberBetween(bookId, chapterNumber, verseStartNumber, verEndNumber, sortByBookChapterVerse);
+
         }
     
         for(VerseEntity verseEntity: verseQueryResult){

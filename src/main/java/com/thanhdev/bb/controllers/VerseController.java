@@ -19,9 +19,9 @@ public class VerseController {
     VerseService verseService;
 
     @GetMapping(value="verses")
-    public List<VerseTO> getVerses(Long bookId, @RequestParam(required = false) Long chapterNumber, @RequestParam(required = false) Long verseNumber) throws RequestInvalidException {
+    public List<VerseTO> getVerses(Long bookId, @RequestParam(required = false) Long chapterNumber, @RequestParam(required = false) Long verseStartNumber, @RequestParam(required = false) Long verseEndNumber) throws RequestInvalidException {
         if(bookId == null) throw new RequestInvalidException("Required bookId is missing");
-        return verseService.getVerses(bookId, chapterNumber, verseNumber);
+        return verseService.getVerses(bookId, chapterNumber, verseStartNumber, verseEndNumber);
     }
     
 }

@@ -15,5 +15,7 @@ public interface VerseRepo extends JpaRepository<VerseEntity, Long> {
     ArrayList<VerseEntity> findByBookIdAndChapterNumber(Long bookId, Long chapterNumber, Sort sort);
     ArrayList<VerseEntity> findByBookIdAndChapterNumberAndVerseNumber(Long bookId, Long chapterNumber,
             Long verseNumber, Sort sort);
+    ArrayList<VerseEntity> findByBookIdAndChapterNumberAndVerseNumberBetween (Long bookId, Long chapterNumber,
+            Long verseStartNumber, Long verseEndNumber, Sort sort);
    
 }

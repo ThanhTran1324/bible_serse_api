@@ -5,6 +5,6 @@ import java.util.List;
 import com.thanhdev.bb.io.to.VerseTO;
 
 public interface VerseService {
-    List<VerseTO> getVerses(Long bookId, Long chapterNumber, Long verseNumber);
+    List<VerseTO> getVerses(Long bookId, Long chapterNumber, Long verseStartNumber, Long verseEndNumber);
 
 }
